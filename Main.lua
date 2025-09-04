@@ -33,13 +33,13 @@ local Window = Rayfield:CreateWindow({
       FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
       SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
       GrabKeyFromSite = true, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-      Key = {"https://pastebin.com/raw/pLpFr9j2"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+      Key = {https://pastebin.com/raw/pLpFr9j2} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
    }
 })
 
 local PlayerTab = Window:CreateTab(" Player Scripts", 4483362458) -- Title, Image
 
-local Section = PlayerTab:CreateSection("Modify")
+local PlayerSection = PlayerTab:CreateSection("Modify")
 
 
 local SliderSpeed = PlayerTab:CreateSlider({
@@ -63,5 +63,20 @@ local SliderJump = PlayerTab:CreateSlider({
    Flag = "Slider2", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(Value)
  game.Players.LocalPlayer.Character.Humanoid.JumpPower= (Value)
+   end,
+})
+local BloxfruitsTab = Window:CreateTab("🍉 Bloxfruits Scripts", 4483362458)
+
+local PlayerSection = PlayerTab:CreateSection("Modify")
+
+local SliderDashLength = PlayerTab:CreateSlider({
+   Name = "DashLength",
+   Range = {1, 300},
+   Increment = 3,
+   Suffix = "Your Dash!",
+   CurrentValue = 16,
+   Flag = "Slider3", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+ game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
    end,
 })
